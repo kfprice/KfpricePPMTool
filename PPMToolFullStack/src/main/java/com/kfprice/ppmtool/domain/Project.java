@@ -1,4 +1,4 @@
-package domain;
+package com.kfprice.ppmtool.domain;
 
 import javax.persistence.*;
 import java.util.Date;
