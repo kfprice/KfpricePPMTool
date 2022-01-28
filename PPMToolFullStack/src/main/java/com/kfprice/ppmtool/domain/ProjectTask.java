@@ -12,7 +12,7 @@ public class ProjectTask {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(updatable = false)
+    @Column(updatable = false, unique = true)
     private String projectSequence;
     @NotBlank(message = "Please include a project summary")
     private String summary;
@@ -20,8 +20,8 @@ public class ProjectTask {
     private String status;
     private Integer priority;
     private Date dueDate;
-
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
+    //ManyToOne with Backlog
+    @ManyToOne(fetch = FetchType.EAGER) //REMOVE REFRESH
     @JoinColumn(name="backlog_id", updatable = false, nullable = false)
     @JsonIgnore
     private Backlog backlog;
@@ -106,20 +106,20 @@ public class ProjectTask {
         this.create_At = create_At;
     }
 
-    public Backlog getBacklog() {
-        return backlog;
-    }
-
-    public void setBacklog(Backlog backlog) {
-        this.backlog = backlog;
-    }
-
     public Date getUpdate_At() {
         return update_At;
     }
 
     public void setUpdate_At(Date update_At) {
         this.update_At = update_At;
+    }
+
+    public Backlog getBacklog() {
+        return backlog;
+    }
+
+    public void setBacklog(Backlog backlog) {
+        this.backlog = backlog;
     }
 
     @PrePersist
@@ -129,7 +129,7 @@ public class ProjectTask {
 
     @PreUpdate
     protected void onUpdate(){
-        this.create_At = new Date();
+        this.update_At = new Date();
     }
 
     @Override
@@ -140,8 +140,9 @@ public class ProjectTask {
                 ", summary='" + summary + '\'' +
                 ", acceptanceCriteria='" + acceptanceCriteria + '\'' +
                 ", status='" + status + '\'' +
-                ", priority='" + priority + '\'' +
+                ", priority=" + priority +
                 ", dueDate=" + dueDate +
+                ", backlog=" + backlog +
                 ", projectIdentifier='" + projectIdentifier + '\'' +
                 ", create_At=" + create_At +
                 ", update_At=" + update_At +
