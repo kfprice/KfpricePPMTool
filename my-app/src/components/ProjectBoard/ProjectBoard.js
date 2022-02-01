@@ -41,8 +41,9 @@ class ProjectBoard extends Component {
                   <button className="btn btn-danger ml-4">Delete</button>
                 </div>
               </div>
+
               {
-                //<!-- SAMPLE PROJECT TASK ENDS HERE -->
+                // <!-- SAMPLE PROJECT TASK ENDS HERE -->
               }
             </div>
             <div className="col-md-4">
@@ -52,8 +53,8 @@ class ProjectBoard extends Component {
                 </div>
               </div>
               {
-                // <!-- SAMPLE PROJECT TASK STARTS HERE -->
-                // <!-- SAMPLE PROJECT TASK ENDS HERE -->
+                //  <!-- SAMPLE PROJECT TASK STARTS HERE -->
+                //         <!-- SAMPLE PROJECT TASK ENDS HERE -->
               }
             </div>
             <div className="col-md-4">
