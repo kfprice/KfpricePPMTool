@@ -38,7 +38,7 @@ class Backlog extends Component {
             </div>
             {todoItems}
             {
-              //insert task here
+              // insert tasks here
             }
           </div>
           <div className="col-md-4">
